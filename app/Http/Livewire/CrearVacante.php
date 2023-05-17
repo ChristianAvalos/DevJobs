@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Salario;
+use App\Models\Vacante;
 use Livewire\Component;
 use App\Models\Categoria;
 use Livewire\WithFileUploads;
@@ -33,13 +34,25 @@ class CrearVacante extends Component
         $datos = $this->validate();
         //Almacenar la imagen
         $imagen = $this->imagen->store('public/vacantes');
-        $nombre_imagen = str_replace('public/vacantes/','',$imagen);
+        $datos['imagen']= str_replace('public/vacantes/','',$imagen);
 
         //Crear la vacante 
+        Vacante::create([
+            'titulo' => $datos['titulo'],
+            'salario_id' => $datos['salario'],
+            'categoria_id' => $datos['categoria'],
+            'empresa' => $datos['empresa'],
+            'ultimo_dia' => $datos['ultimo_dia'],
+            'descripcion' => $datos['descripcion'],
+            'imagen' => $datos['imagen'],
+            'user_id' => auth()->user()->id,
+        ]);
 
         //Crear un mensaje 
+        session()->flash('mensaje','La vacante se publico correctamente');
 
         //Redireccionar 
+        return redirect()->route('vacantes.index');
     }
 
 
