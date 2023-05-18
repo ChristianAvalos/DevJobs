@@ -14,7 +14,7 @@
                     Candidatos
                 </a>
 
-                <a href="" class="text-center bg-blue-800 px-4 rounded-lg text-white text-xs font-bold uppercase">
+                <a href="{{route('vacantes.edit',$vacante->id)}}" class="text-center bg-blue-800 px-4 rounded-lg text-white text-xs font-bold uppercase">
                     Editar
                 </a>
 
