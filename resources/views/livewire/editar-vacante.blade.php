@@ -1,4 +1,4 @@
-<form action="" class="md:w-1/2 space-y-5" wire:submit.prevent='crearVacante'>
+<form action="" class="md:w-1/2 space-y-5" wire:submit.prevent='editarVacante'>
     <div>
         <x-input-label for="titulo" :value="__('Titulo vacante')" />
         <x-text-input id="titulo" class="block mt-1 w-full" type="text" 
@@ -81,21 +81,31 @@
         <x-text-input id="imagen" class="block mt-1 w-full" type="file" 
         accept="image/*"
         wire:model="imagen" />
+
         <div class="my-5 w-80">
+            <x-input-label :value="__('Imagen actual')" />
+            <img src="{{ asset('storage/vacantes/' . $imagen )}}" alt="{{'Imagen vacante '. $titulo}}">
+
+        </div>
+
+
+
+        {{-- <div class="my-5 w-80">
             @if ($imagen)
                 Imagen:
                 <img src="{{$imagen->temporaryUrl()}}"/>
                 
-            @endif
+            @endif --}}
 
         </div>
         @error('imagen')
             <livewire:mostrar-alerta :message="$message"/>   
         @enderror
-
+    
         <x-primary-button>
-            Crear vacante
+            Guardar cambios
         </x-primary-button>
+
 
     </div>
 
