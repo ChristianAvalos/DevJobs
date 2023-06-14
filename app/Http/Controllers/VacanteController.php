@@ -13,7 +13,8 @@ class VacanteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+        $this->authorize('viewAny',Vacante::class);
         return view('vacantes.index');
     }
 
@@ -24,6 +25,7 @@ class VacanteController extends Controller
      */
     public function create()
     {
+        $this->authorize('viewAny',Vacante::class);
         return view('vacantes.create');
     }
 
