@@ -17,6 +17,7 @@ class PostularVacante extends Component
     ];
 
     public function mount(Vacante $vacante){
+        
         $this->vacante=$vacante;
     }
 
@@ -38,6 +39,9 @@ class PostularVacante extends Component
         //crear notificacion y enviar email 
 
         //mostrar al usuario un mensaje todo ok 
+        session()->flash('mensaje','Se envio correctamete tu informacion, mucha suerte');
+
+        return redirect()->back();
 
     }
     public function render()
