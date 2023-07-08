@@ -3,13 +3,13 @@
     <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
 
             @forelse ($vacantes as $vacante)
-            <div class="p-6 bg-white border-b border-gray-200 md:flex md:justify-between md:items-center">
+            <div class="p-6 bg-white dark:bg-gray-800 border-b border-gray-200 md:flex md:justify-between md:items-center">
                 <div class="space-y-3">
-                    <a href="{{route('vacantes.show',$vacante->id)}}" class="text-xl font-bold">
+                    <a href="{{route('vacantes.show',$vacante->id)}}" class="text-xl font-bold dark:text-gray-200">
                         {{ $vacante ->titulo }}
                     </a>
-                    <p class="text-sm text-gray-600 font-bold">{{$vacante->empresa}}</p>
-                    <p class="text-sm text-gray-500">Ultimo dia: {{$vacante->ultimo_dia->format('d/m/Y')}}</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-200 font-bold">{{$vacante->empresa}}</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-200">Ultimo dia: {{$vacante->ultimo_dia->format('d/m/Y')}}</p>
                 </div>
                 <div class="flex flex-col md:flex-row items-stretch gap-3 mt-5 md:mt-0">
                     <a href="{{route('candidatos.index',$vacante)}}" class="text-center bg-slate-800 px-4 rounded-lg text-white text-xs font-bold uppercase">
